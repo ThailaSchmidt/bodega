@@ -1,3 +1,4 @@
+
 struct date {
     int day;
     int month;
@@ -26,3 +27,4 @@ Sent2 *insertClient(Sent2 *list2);
 int emptyClient (Sent2 *list2);
 void printClient (Sent2 *list2);
 int freeClient(Sent2 *list2);
+int ofAge(Sent2 *list2, int cpf);

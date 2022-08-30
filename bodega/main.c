@@ -26,7 +26,7 @@ int main(void) {
         if(menu == 1) list = insertDrink(list);
         else if (menu == 2) printDrink(list);
         else if (menu == 3) buyDrink(list);
-        else if (menu == 4) sellDrink(list);
+        else if (menu == 4) sellDrink(list, list2);
         else if (menu == 5) list2 = insertClient(list2);
         else if (menu == 6) printClient(list2);
         else if (menu == 7) break;

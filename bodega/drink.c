@@ -96,7 +96,20 @@ Sent *buyDrink(Sent *list) {
     return list;
 }  
 
-Sent *sellDrink(Sent *list) {
+int ofAge(Sent2 *list2, int cpf){
+    Client *aux = list2->first;
+    for (; aux != NULL; aux = aux->next){
+        if(aux->cpf == cpf){
+            if(aux->date.year < 2004){ //menor de idade
+                return 0;
+            }else{ //maior de idade
+                return 1;
+            }
+        }
+    }return 2;
+}
+
+Sent *sellDrink(Sent *list, Sent2 *list2) {
     Drink *aux;
     int cod, qtd, cpf;
     printf("Digite o código da bebida a ser vendida:\n");
@@ -115,7 +128,15 @@ Sent *sellDrink(Sent *list) {
                     printf("\nNão há estoque suficiente.");
                     return list;
                 }else if (aux->alcoholic == 1){
-                    
+                    ofAge(list2, cpf);
+                    if(ofAge(list2, cpf)){
+                        printf("Cliente menor de idade.");
+                        return list;
+                    }else{
+                        aux->inventory = aux->inventory - qtd;
+                        printf("\nBebida vendida com sucesso!");
+                        return list;
+                    }
                 }else{
                     aux->inventory = aux->inventory - qtd;
                     printf("\nBebida vendida com sucesso!");
